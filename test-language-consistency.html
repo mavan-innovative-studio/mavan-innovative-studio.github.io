@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Language Consistency Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .test-result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        button { margin: 5px; padding: 10px 15px; }
+        .language-info { background: #e9ecef; padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Language Consistency Test</h1>
+    
+    <div class="test-section">
+        <h2>Current Language Status</h2>
+        <div id="language-info" class="language-info">
+            <p>Current Language: <span id="current-lang">Loading...</span></p>
+            <p>URL Language: <span id="url-lang">-</span></p>
+            <p>Session Language: <span id="session-lang">-</span></p>
+            <p>Stored Language: <span id="stored-lang">-</span></p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Language Controls</h2>
+        <button onclick="setLanguage('en', 'EN')">Set English</button>
+        <button onclick="setLanguage('fa', 'فا')">Set Persian</button>
+        <button onclick="setLanguage('de', 'DE')">Set German</button>
+        <button onclick="ensureLanguageConsistency()">Force Consistency Check</button>
+        <button onclick="updateLanguageInfo()">Refresh Info</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Navigation Test</h2>
+        <p>Test navigation between pages with language consistency:</p>
+        <a href="index.html?lang=en" target="_blank">Index (English)</a> |
+        <a href="index.html?lang=fa" target="_blank">Index (Persian)</a> |
+        <a href="index.html?lang=de" target="_blank">Index (German)</a><br><br>
+        
+        <a href="jojo.html?lang=en" target="_blank">JoJo (English)</a> |
+        <a href="jojo.html?lang=fa" target="_blank">JoJo (Persian)</a> |
+        <a href="jojo.html?lang=de" target="_blank">JoJo (German)</a><br><br>
+        
+        <a href="trillion.html?lang=en" target="_blank">Trillion (English)</a> |
+        <a href="trillion.html?lang=fa" target="_blank">Trillion (Persian)</a> |
+        <a href="trillion.html?lang=de" target="_blank">Trillion (German)</a>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="test-results">
+            <p>Run tests by navigating between pages and checking language consistency.</p>
+        </div>
+    </div>
+
+    <!-- Include the localization scripts -->
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/localization.js"></script>
+
+    <script>
+        function updateLanguageInfo() {
+            const currentLang = getCurrentLanguage();
+            const urlLang = new URLSearchParams(window.location.search).get('lang') || '-';
+            const sessionLang = sessionStorage.getItem('currentLanguage') || '-';
+            const storedLang = localStorage.getItem('selectedLanguage') || '-';
+
+            document.getElementById('current-lang').textContent = currentLang;
+            document.getElementById('url-lang').textContent = urlLang;
+            document.getElementById('session-lang').textContent = sessionLang;
+            document.getElementById('stored-lang').textContent = storedLang;
+        }
+
+        function addTestResult(message, isSuccess = true) {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${isSuccess ? 'success' : 'error'}`;
+            resultDiv.textContent = `${new Date().toLocaleTimeString()}: ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        // Update language info every second
+        setInterval(updateLanguageInfo, 1000);
+
+        // Initial update
+        updateLanguageInfo();
+
+        // Test language consistency on page load
+        setTimeout(() => {
+            addTestResult('Language consistency test initialized');
+        }, 1000);
+    </script>
+</body>
+</html>

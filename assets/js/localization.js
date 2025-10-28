@@ -34,14 +34,21 @@ class Localization {
             return urlLang;
         }
 
-        // 2. Check stored preference
+        // 2. Check sessionStorage for immediate language restoration
+        const sessionLang = sessionStorage.getItem('currentLanguage');
+        if (sessionLang && translations[sessionLang]) {
+            console.log('Language detected from session:', sessionLang);
+            return sessionLang;
+        }
+
+        // 3. Check stored preference
         const storedLang = this.getStoredLanguage();
         if (storedLang && translations[storedLang]) {
             console.log('Language detected from storage:', storedLang);
             return storedLang;
         }
 
-        // 3. Detect from country (only if no URL parameter or stored preference)
+        // 4. Detect from country (only if no URL parameter or stored preference)
         try {
             const country = await this.detectCountry();
             const countryLangMap = this.getCountryLanguageMap();
@@ -115,6 +122,11 @@ class Localization {
                     }
                 }
             });
+
+            // Update navigation links periodically to ensure they stay current
+            setInterval(() => {
+                this.updateNavigationLinks();
+            }, 1000);
         };
 
         if (document.readyState === 'loading') {
@@ -122,6 +134,64 @@ class Localization {
         } else {
             attachLangHandlers();
         }
+
+        // Ensure language consistency when page becomes visible
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                this.ensureLanguageConsistency();
+            }
+        });
+
+        // Also ensure consistency when the page loads
+        setTimeout(() => {
+            this.ensureLanguageConsistency();
+        }, 100);
+
+        // Handle browser back/forward navigation
+        window.addEventListener('popstate', () => {
+            setTimeout(() => {
+                this.ensureLanguageConsistency();
+            }, 50);
+        });
+    }
+
+    // Ensure language consistency across page navigation
+    ensureLanguageConsistency() {
+        const currentUrlLang = this.getLanguageFromURL();
+        const sessionLang = sessionStorage.getItem('currentLanguage');
+        const storedLang = this.getStoredLanguage();
+
+        console.log('Language consistency check:', {
+            currentLang: this.currentLang,
+            urlLang: currentUrlLang,
+            sessionLang: sessionLang,
+            storedLang: storedLang
+        });
+
+        // If URL has a language parameter, use it and update session
+        if (currentUrlLang && translations[currentUrlLang]) {
+            if (this.currentLang !== currentUrlLang) {
+                console.log('Language mismatch detected, updating to URL language:', currentUrlLang);
+                this.setLanguage(currentUrlLang);
+            }
+        }
+        // If no URL parameter but session has a language, use it
+        else if (sessionLang && translations[sessionLang] && !currentUrlLang) {
+            if (this.currentLang !== sessionLang) {
+                console.log('Language mismatch detected, updating to session language:', sessionLang);
+                this.setLanguage(sessionLang);
+            }
+        }
+        // If no URL or session, but localStorage has a language, use it
+        else if (storedLang && translations[storedLang] && !currentUrlLang && !sessionLang) {
+            if (this.currentLang !== storedLang) {
+                console.log('Language mismatch detected, updating to stored language:', storedLang);
+                this.setLanguage(storedLang);
+            }
+        }
+
+        // Always update navigation links to ensure they have the current language
+        this.updateNavigationLinks();
     }
 
     getStoredLanguage() {
@@ -191,6 +261,9 @@ class Localization {
         
         // Update navigation links with language parameter
         this.updateNavigationLinks();
+
+        // Store the current language in sessionStorage for immediate access
+        sessionStorage.setItem('currentLanguage', lang);
     }
 
     reinitializeOwlCarousel(isRTL) {
@@ -335,7 +408,17 @@ class Localization {
     // Generate language-aware URL
     getLanguageURL(baseURL, lang = null) {
         const targetLang = lang || this.currentLang;
-        const url = new URL(baseURL, window.location.origin);
+        
+        // Handle different URL formats
+        let url;
+        if (baseURL.startsWith('http://') || baseURL.startsWith('https://')) {
+            url = new URL(baseURL);
+        } else if (baseURL.startsWith('/')) {
+            url = new URL(baseURL, window.location.origin);
+        } else {
+            url = new URL(baseURL, window.location.origin);
+        }
+        
         url.searchParams.set('lang', targetLang);
         return url.toString();
     }
@@ -350,7 +433,27 @@ class Localization {
             if (href) {
                 // Extract the filename from the href
                 const filename = href.split('/').pop();
-                link.href = this.getLanguageURL(filename);
+                const newHref = this.getLanguageURL(filename);
+                
+                // Only update if the href is different to avoid unnecessary updates
+                if (link.href !== newHref) {
+                    link.href = newHref;
+                }
+            }
+        });
+
+        // Also update any links that might have relative paths without .html extension
+        const relativeLinks = document.querySelectorAll('a[href^="./"], a[href^="../"], a[href^="/"]');
+        relativeLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && (href.includes('index') || href.includes('jojo') || href.includes('trillion'))) {
+                // Convert relative paths to proper URLs with language parameter
+                const baseUrl = href.startsWith('/') ? href.substring(1) : href;
+                const newHref = this.getLanguageURL(baseUrl);
+                
+                if (link.href !== newHref) {
+                    link.href = newHref;
+                }
             }
         });
     }
@@ -361,8 +464,31 @@ let localization;
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', async () => {
         localization = new Localization();
+        // Make localization globally accessible
+        window.localization = localization;
     });
 } else {
     localization = new Localization();
+    // Make localization globally accessible
+    window.localization = localization;
 }
+
+// Global function to ensure language consistency
+window.ensureLanguageConsistency = function() {
+    if (localization) {
+        localization.ensureLanguageConsistency();
+    }
+};
+
+// Global function to get current language
+window.getCurrentLanguage = function() {
+    return localization ? localization.currentLang : 'en';
+};
+
+// Global function to set language programmatically
+window.setLanguage = function(lang, langName) {
+    if (localization) {
+        localization.setLanguage(lang, langName);
+    }
+};
 
