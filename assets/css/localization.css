@@ -254,8 +254,12 @@ body.rtl .text-center {
 
 /* RTL: Mobile Menu */
 @media (max-width: 991px) {
+    /* Force logo to always be on the left side in mobile */
     body.rtl .header-area .main-nav .logo {
-        float: right !important;
+        float: left !important;
+        text-align: left !important;
+        margin-left: 30px !important;
+        margin-right: 0 !important;
     }
     
     body.rtl .header-area .main-nav .nav {
@@ -282,8 +286,11 @@ body.rtl .text-center {
         text-align: right;
     }
     
+    /* Menu trigger should be on the right side in RTL mobile */
     body.rtl .header-area .main-nav .menu-trigger {
-        float: left !important;
+        float: right !important;
+        right: 40px !important;
+        left: auto !important;
     }
 }
 

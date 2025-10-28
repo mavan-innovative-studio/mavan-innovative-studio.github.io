@@ -76,6 +76,9 @@ class Localization {
         // Update all translatable elements
         this.updateContent();
         
+        // Update JoJo header image
+        this.updateJojoHeaderImage(lang);
+        
         // Reinitialize Owl Carousel with RTL support
         this.reinitializeOwlCarousel(isRTL);
         
@@ -191,6 +194,18 @@ class Localization {
         const currentLangElement = document.getElementById('current-lang');
         if (currentLangElement) {
             currentLangElement.textContent = langName;
+        }
+    }
+
+    updateJojoHeaderImage(lang) {
+        const jojoHeaderImage = document.getElementById('jojo-header-image');
+        if (jojoHeaderImage) {
+            // Use Persian header for 'fa', English header for 'en' and 'de'
+            if (lang === 'fa') {
+                jojoHeaderImage.src = 'assets/images/jojo-header-fa.png';
+            } else {
+                jojoHeaderImage.src = 'assets/images/jojo-header-en.png';
+            }
         }
     }
 }

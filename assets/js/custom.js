@@ -38,8 +38,19 @@
 	mobileNav();
 
 
-	// Scroll animation init
-	window.sr = new scrollReveal();
+	// Scroll animation init with mobile-friendly configuration
+	window.sr = new scrollReveal({
+		reset: false,
+		mobile: true,
+		distance: '30px',
+		duration: 600,
+		delay: 0,
+		opacity: 0,
+		easing: 'ease',
+		scale: 1,
+		viewFactor: 0.2,
+		viewOffset: { top: 0, right: 0, bottom: 0, left: 0 }
+	});
 
 
 	// Menu Dropdown Toggle
