@@ -73,8 +73,8 @@ const translations = {
         'app.download.pwa': 'Open PWA Version',
         
         // Terms of Use
-        'app.terms.title': 'Terms of Use',
-        'app.terms.intro': 'Welcome to our application. By using our application, you agree to comply with and be bound by the following terms and conditions.',
+        'app.terms.title': 'JoJo - Terms of Use',
+        'app.terms.intro': 'Welcome to JoJo Checklist. By using our application, you agree to comply with and be bound by the following terms and conditions.',
         'app.terms.acceptance.title': '1. Acceptance of Terms',
         'app.terms.acceptance.content': 'By accessing and using this application, you accept and agree to be bound by the terms and provision of this agreement.',
         'app.terms.use.title': '2. Use of Service',
@@ -94,8 +94,8 @@ const translations = {
         'app.terms.contact.content': 'If you have any questions about these Terms, please contact us through our website.',
         
         // Privacy Policy
-        'app.privacy.title': 'Privacy Policy',
-        'app.privacy.intro': 'At Mavan, we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your personal information when you use our application.',
+        'app.privacy.title': 'JoJo - Privacy Policy',
+        'app.privacy.intro': 'At Mavan, we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your personal information when you use JoJo Checklist.',
         'app.privacy.collection.title': '1. Information We Collect',
         'app.privacy.collection.content': 'We collect information that you provide directly to us, including:',
         'app.privacy.collection.item1': 'Account information (email, username, password)',
@@ -136,7 +136,7 @@ const translations = {
         'nav.products': 'محصولات',
         'nav.team': 'تیم',
         'nav.applications': 'اپلیکیشن‌ها',
-        'nav.jojo': 'جوجو',
+        'nav.jojo': 'جج',
         'nav.trillion': 'تریلیون',
         'nav.contact': 'تماس با ما',
         
@@ -149,8 +149,8 @@ const translations = {
         
         // Products Section
         'products.title': 'محصولات ما',
-        'product.jojo.title': 'جوجو',
-        'product.jojo.description': 'جوجو چک‌لیست به شما کمک می‌کند تا وظایف خود را با الگوهای سفارشی و آماده به راحتی سازماندهی کنید.',
+        'product.jojo.title': 'جج',
+        'product.jojo.description': 'جج چک‌لیست به شما کمک می‌کند تا وظایف خود را با الگوهای سفارشی و آماده به راحتی سازماندهی کنید.',
         'product.jojo.button': 'دریافت اپلیکیشن',
         'product.trillion.title': 'تریلیون',
         'product.trillion.description': 'تریلیون یک اپلیکیشن مدیریت بودجه است که روی نظارت بر امور مالی شما تمرکز دارد تا به شما در برنامه‌ریزی و هزینه کردن بهتر کمک کند.',
@@ -189,12 +189,18 @@ const translations = {
         'app.nav.privacy': 'حریم خصوصی',
         
         // JoJo App Page
-        'app.jojo.title': 'چک‌لیست جوجو',
-        'app.jojo.description': 'چک‌لیست جوجو به شما کمک می‌کند تا وظایف خود را با الگوهای سفارشی و آماده به راحتی سازماندهی کنید. چه برنامه‌ریزی روز خود، مدیریت پروژه‌ها یا پیگیری اهداف، جوجو آن را ساده و بصری می‌کند. سازمان‌یافته بمانید، با جوجو بهره‌ور بمانید!',
+        'app.jojo.title': 'چک‌لیست جج',
+        'app.jojo.description': 'چک‌لیست جج به شما کمک می‌کند تا وظایف خود را با الگوهای سفارشی و آماده به راحتی سازماندهی کنید. چه برنامه‌ریزی روز خود، مدیریت پروژه‌ها یا پیگیری اهداف، جج آن را ساده و بصری می‌کند. سازمان‌یافته بمانید، با جج بهره‌ور بمانید!',
         
         // Trillion App Page
         'app.trillion.title': 'تریلیون',
         'app.trillion.description': 'تریلیون یک برنامه مدیریت بودجه است که بر نظارت بر امور مالی شما تمرکز دارد تا به شما در برنامه‌ریزی و هزینه کردن بهتر کمک کند. هزینه‌های خود را پیگیری کنید، بودجه تعیین کنید و بینش‌هایی در مورد عادات هزینه کردن خود به دست آورید. با تریلیون کنترل آینده مالی خود را به دست بگیرید!',
+        
+        // Trillion Terms and Privacy
+        'app.trillion.terms.title': 'شرایط استفاده - تریلیون',
+        'app.trillion.terms.intro': 'به تریلیون خوش آمدید. با استفاده از برنامه ما، شما موافقت می‌کنید که با شرایط و ضوابط زیر رعایت و محدود شوید.',
+        'app.trillion.privacy.title': 'حریم خصوصی - تریلیون',
+        'app.trillion.privacy.intro': 'در ماوان، ما حریم خصوصی شما را جدی می‌گیریم. این سیاست حریم خصوصی نحوه جمع‌آوری، استفاده و حفاظت از اطلاعات شخصی شما هنگام استفاده از تریلیون را توضیح می‌دهد.',
         
         // Download Buttons
         'app.download.cafebazaar': 'دانلود از کافه بازار',
@@ -202,8 +208,8 @@ const translations = {
         'app.download.pwa': 'باز کردن نسخه PWA',
         
         // Terms of Use
-        'app.terms.title': 'شرایط استفاده',
-        'app.terms.intro': 'به برنامه ما خوش آمدید. با استفاده از برنامه ما، شما موافقت می‌کنید که با شرایط و ضوابط زیر رعایت و محدود شوید.',
+        'app.terms.title': 'شرایط استفاده - جج',
+        'app.terms.intro': 'به چک‌لیست جج خوش آمدید. با استفاده از برنامه ما، شما موافقت می‌کنید که با شرایط و ضوابط زیر رعایت و محدود شوید.',
         'app.terms.acceptance.title': '۱. پذیرش شرایط',
         'app.terms.acceptance.content': 'با دسترسی و استفاده از این برنامه، شما شرایط و مقررات این توافقنامه را می‌پذیرید و موافقت می‌کنید که محدود شوید.',
         'app.terms.use.title': '۲. استفاده از سرویس',
@@ -223,8 +229,8 @@ const translations = {
         'app.terms.contact.content': 'اگر سوالی در مورد این شرایط دارید، لطفا از طریق وب‌سایت ما با ما تماس بگیرید.',
         
         // Privacy Policy
-        'app.privacy.title': 'سیاست حریم خصوصی',
-        'app.privacy.intro': 'در ماوان، ما حریم خصوصی شما را جدی می‌گیریم. این سیاست حریم خصوصی نحوه جمع‌آوری، استفاده و حفاظت از اطلاعات شخصی شما هنگام استفاده از برنامه ما را توضیح می‌دهد.',
+        'app.privacy.title': 'حریم خصوصی - جج',
+        'app.privacy.intro': 'در ماوان، ما حریم خصوصی شما را جدی می‌گیریم. این سیاست حریم خصوصی نحوه جمع‌آوری، استفاده و حفاظت از اطلاعات شخصی شما هنگام استفاده از چک‌لیست جج را توضیح می‌دهد.',
         'app.privacy.collection.title': '۱. اطلاعاتی که جمع‌آوری می‌کنیم',
         'app.privacy.collection.content': 'ما اطلاعاتی را که مستقیماً به ما ارائه می‌دهید، جمع‌آوری می‌کنیم، از جمله:',
         'app.privacy.collection.item1': 'اطلاعات حساب کاربری (ایمیل، نام کاربری، رمز عبور)',
@@ -325,14 +331,20 @@ const translations = {
         'app.trillion.title': 'Trillion',
         'app.trillion.description': 'Trillion ist eine Budgetverwaltungs-App, die sich auf die Überwachung Ihrer Finanzen konzentriert, um Ihnen bei der besseren Planung und Ausgaben zu helfen. Verfolgen Sie Ihre Ausgaben, legen Sie Budgets fest und gewinnen Sie Einblicke in Ihre Ausgabegewohnheiten. Übernehmen Sie mit Trillion die Kontrolle über Ihre finanzielle Zukunft!',
         
+        // Trillion Terms and Privacy
+        'app.trillion.terms.title': 'Trillion - Nutzungsbedingungen',
+        'app.trillion.terms.intro': 'Willkommen zu Trillion. Durch die Nutzung unserer Anwendung erklären Sie sich damit einverstanden, die folgenden Bedingungen einzuhalten und sich daran zu halten.',
+        'app.trillion.privacy.title': 'Trillion - Datenschutzerklärung',
+        'app.trillion.privacy.intro': 'Bei Mavan nehmen wir Ihre Privatsphäre ernst. Diese Datenschutzerklärung erklärt, wie wir Ihre persönlichen Informationen sammeln, verwenden und schützen, wenn Sie Trillion nutzen.',
+        
         // Download Buttons
         'app.download.cafebazaar': 'Bei Cafe Bazaar Herunterladen',
         'app.download.myket': 'Bei Myket Herunterladen',
         'app.download.pwa': 'PWA-Version Öffnen',
         
         // Terms of Use
-        'app.terms.title': 'Nutzungsbedingungen',
-        'app.terms.intro': 'Willkommen zu unserer Anwendung. Durch die Nutzung unserer Anwendung erklären Sie sich damit einverstanden, die folgenden Bedingungen einzuhalten und sich daran zu halten.',
+        'app.terms.title': 'JoJo - Nutzungsbedingungen',
+        'app.terms.intro': 'Willkommen zu JoJo Checkliste. Durch die Nutzung unserer Anwendung erklären Sie sich damit einverstanden, die folgenden Bedingungen einzuhalten und sich daran zu halten.',
         'app.terms.acceptance.title': '1. Annahme der Bedingungen',
         'app.terms.acceptance.content': 'Durch den Zugriff auf und die Nutzung dieser Anwendung akzeptieren Sie die Bedingungen und Bestimmungen dieser Vereinbarung und erklären sich damit einverstanden.',
         'app.terms.use.title': '2. Nutzung des Dienstes',
@@ -352,8 +364,8 @@ const translations = {
         'app.terms.contact.content': 'Wenn Sie Fragen zu diesen Bedingungen haben, kontaktieren Sie uns bitte über unsere Website.',
         
         // Privacy Policy
-        'app.privacy.title': 'Datenschutzerklärung',
-        'app.privacy.intro': 'Bei Mavan nehmen wir Ihre Privatsphäre ernst. Diese Datenschutzerklärung erklärt, wie wir Ihre persönlichen Informationen sammeln, verwenden und schützen, wenn Sie unsere Anwendung nutzen.',
+        'app.privacy.title': 'JoJo - Datenschutzerklärung',
+        'app.privacy.intro': 'Bei Mavan nehmen wir Ihre Privatsphäre ernst. Diese Datenschutzerklärung erklärt, wie wir Ihre persönlichen Informationen sammeln, verwenden und schützen, wenn Sie JoJo Checkliste nutzen.',
         'app.privacy.collection.title': '1. Informationen, die wir sammeln',
         'app.privacy.collection.content': 'Wir sammeln Informationen, die Sie uns direkt zur Verfügung stellen, einschließlich:',
         'app.privacy.collection.item1': 'Kontoinformationen (E-Mail, Benutzername, Passwort)',
