@@ -929,6 +929,139 @@ testimonials
   margin-bottom: -60px;
 }
 
+/* Team Card - modern vertical layout */
+#testimonials .team-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(160deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+  border: 1px solid rgba(44,52,60,0.06);
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+#testimonials .team-card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #6DD19C 0%, #2C343C 100%);
+}
+
+#testimonials .team-card .team-photo {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 14px 16px 14px 18px;
+  transform: none;
+  filter: saturate(105%) contrast(102%);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#testimonials .team-card .team-info {
+  padding: 12px 18px;
+  text-align: center;
+}
+
+#testimonials .team-card .team-name {
+  font-weight: 700;
+  font-size: 18px;
+  color: #1f1f1f;
+  letter-spacing: 0.1px;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+#testimonials .team-card .team-name:after {
+  display: none;
+}
+
+#testimonials .team-card .team-role {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+}
+
+#testimonials .team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.12);
+}
+
+#testimonials .team-card:hover .team-photo {
+  transform: scale(1.03);
+  filter: saturate(110%) contrast(105%);
+}
+
+#testimonials .team-card:hover .team-name:after {
+  width: 0;
+}
+
+/* Adjust carousel items to give breathing room */
+#testimonials .owl-carousel .item {
+  padding: 10px 12px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Center items in row when there is nothing to scroll */
+#testimonials .owl-carousel.center-stage .owl-stage {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#testimonials .owl-carousel.center-stage .owl-stage-outer {
+  display: flex;
+  justify-content: center;
+}
+
+#testimonials .col-lg-10 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#testimonials .owl-carousel {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#testimonials .owl-carousel.center-stage .owl-item {
+  float: none;
+}
+
+/* Ensure card shadows aren't clipped by carousel viewport */
+#testimonials .owl-carousel .owl-stage-outer {
+  overflow: visible;
+}
+
+#testimonials .owl-carousel .owl-item {
+  overflow: visible;
+}
+
+@media (max-width: 576px) {
+  #testimonials .team-card .team-photo {
+    width: 68px;
+    height: 68px;
+    margin: 12px 14px 12px 14px;
+  }
+}
+
+/* Generic hover lift utility (used by team-card) */
+.hover-lift {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+}
+
 .owl-carousel .owl-nav button.owl-next span {
   z-index: 10;
   top: 45%;

@@ -8,9 +8,9 @@ class Localization {
     init() {
         // Set initial language
         this.setLanguage(this.currentLang);
-        
-        // Add event listeners to language options
-        document.addEventListener('DOMContentLoaded', () => {
+
+        // Add event listeners to language options (works whether DOM is loaded or not)
+        const attachLangHandlers = () => {
             const langOptions = document.querySelectorAll('.lang-option');
             langOptions.forEach(option => {
                 option.addEventListener('click', (e) => {
@@ -20,7 +20,13 @@ class Localization {
                     this.setLanguage(lang, langName);
                 });
             });
-        });
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', attachLangHandlers, { once: true });
+        } else {
+            attachLangHandlers();
+        }
     }
 
     getStoredLanguage() {
@@ -89,34 +95,50 @@ class Localization {
     reinitializeOwlCarousel(isRTL) {
         // Check if jQuery and Owl Carousel are available
         if (typeof jQuery !== 'undefined' && jQuery.fn.owlCarousel) {
-            const $owlCarousel = jQuery('.owl-carousel');
+            const $owlCarousel = jQuery('#testimonials .owl-carousel');
             
             if ($owlCarousel.length) {
-                // Destroy existing carousel
-                $owlCarousel.trigger('destroy.owl.carousel');
-                $owlCarousel.removeClass('owl-loaded owl-drag');
+                // Destroy existing carousel safely
+                if ($owlCarousel.hasClass('owl-loaded')) {
+                    $owlCarousel.trigger('destroy.owl.carousel');
+                    $owlCarousel.removeClass('owl-loaded owl-drag');
+                    $owlCarousel.find('.owl-stage-outer').children().unwrap();
+                }
+
+                // Determine item count and controls
+                const teamItemCount = $owlCarousel.find('.item').length || 0;
+                const desktopItems = teamItemCount >= 2 ? 2 : Math.max(teamItemCount, 1);
+                const enableControls = teamItemCount > desktopItems;
+
+                // Toggle centering class when there is nothing to scroll
+                if (enableControls) {
+                    $owlCarousel.removeClass('center-stage');
+                } else {
+                    $owlCarousel.addClass('center-stage');
+                }
+                const mobileItems = Math.min(1, Math.max(teamItemCount, 1));
                 
-                // Reinitialize with RTL setting
+                // Reinitialize with RTL setting and without loop/clones
                 setTimeout(() => {
                     $owlCarousel.owlCarousel({
                         rtl: isRTL,
-                        loop: true,
+                        loop: false,
+                        rewind: false,
+                        center: false,
+                        stagePadding: 0,
                         margin: 30,
-                        nav: true,
-                        pagination: true,
+                        nav: enableControls,
+                        dots: enableControls,
+                        mouseDrag: enableControls,
+                        touchDrag: enableControls,
+                        pullDrag: enableControls,
                         responsive: {
-                            0: {
-                                items: 1
-                            },
-                            600: {
-                                items: 1
-                            },
-                            1000: {
-                                items: 2
-                            }
+                            0: { items: mobileItems },
+                            600: { items: mobileItems },
+                            1000: { items: desktopItems }
                         }
                     });
-                }, 100);
+                }, 50);
             }
         }
     }

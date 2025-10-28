@@ -1,0 +1,196 @@
+/* 
+==============================================
+Motion Design Fixes
+==============================================
+*/
+
+/* Ensure content sections display properly */
+.content-section {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* Ensure content text is visible */
+.content-text {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    z-index: 10;
+}
+
+/* Fix button visibility */
+.main-button,
+.main-button-slider,
+button.main-button,
+.download-btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative;
+    z-index: 100;
+}
+
+/* Ensure product section is visible */
+#about {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+#about .features-item {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+#about .row {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+#about .col-lg-6 {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+#about img {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+#about h4, #about p, #about a {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Disable problematic animations that cause visibility issues */
+.animate-on-scroll {
+    opacity: 1 !important;
+}
+
+.stagger-animation > * {
+    opacity: 1 !important;
+    animation: none !important;
+}
+
+/* Ensure all children in rows are visible */
+.row > * {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Force product items to be visible */
+.features-item,
+.features-icon,
+.col-lg-6 {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Ensure sections are always visible */
+section {
+    position: relative;
+    z-index: 10;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Make sure all section content is visible */
+section * {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Override any hidden states */
+[style*="display: none"] {
+    display: block !important;
+}
+
+[style*="opacity: 0"] {
+    opacity: 1 !important;
+}
+
+[style*="visibility: hidden"] {
+    visibility: visible !important;
+}
+
+/* Fix for gradient text readability */
+.gradient-text {
+    -webkit-text-fill-color: inherit;
+    background: none;
+    color: inherit;
+}
+
+/* Disable pulse animation that may cause issues */
+.pulse {
+    animation: none;
+}
+
+/* Disable pulse-ring that may interfere */
+.pulse-ring::before,
+.pulse-ring::after {
+    display: none;
+}
+
+/* Ensure proper z-index stacking */
+.header-area {
+    z-index: 1000;
+}
+
+/* Fix navigation submenu z-index */
+.header-area .main-nav .nav li.submenu ul {
+    z-index: 9999 !important;
+    position: absolute;
+}
+
+.header-area .main-nav .nav {
+    z-index: 999;
+}
+
+/* Ensure language switcher works */
+.language-switcher ul {
+    z-index: 9999 !important;
+}
+
+.features-item {
+    position: relative;
+    z-index: 10;
+}
+
+/* Disable magnetic button effect to prevent disappearing */
+.magnetic-btn {
+    transform: none !important;
+}
+
+/* Simplify hover effects */
+.hover-lift:hover {
+    transform: translateY(-3px);
+}
+
+.tilt-effect:hover {
+    transform: none;
+}
+
+/* Ensure download buttons are always visible */
+.download-btn:hover {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Allow programmatic closing of language dropdown on desktop */
+@media (min-width: 992px) {
+    .header-area .main-nav .nav li.language-switcher.force-close ul {
+        visibility: hidden !important;
+        opacity: 0 !important;
+        transform: translateY(-2em) !important;
+        z-index: -1 !important;
+    }
+}
+

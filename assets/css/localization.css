@@ -73,6 +73,20 @@ body.rtl .header-area .main-nav .nav li {
     margin-right: 0px;
 }
 
+/* RTL: Increase spacing between top-level navbar items (desktop) */
+body.rtl .header-area .main-nav .nav li {
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+@media (max-width: 1200px) {
+    /* Keep items comfortably spaced on medium screens too */
+    body.rtl .header-area .main-nav .nav li {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+}
+
 body.rtl .header-area .main-nav .nav li.submenu {
     padding-right: 0px;
     padding-left: 35px;
@@ -158,6 +172,16 @@ body.rtl .testimonial-content h4 {
 
 body.rtl .testimonial-content span {
     text-align: center;
+}
+
+/* RTL: Horizontal team card alignment */
+body.rtl #testimonials .team-card {
+    flex-direction: row-reverse;
+}
+
+body.rtl #testimonials .team-card .team-info {
+    text-align: center;
+    padding: 12px 18px;
 }
 
 /* RTL: Footer and Contact */

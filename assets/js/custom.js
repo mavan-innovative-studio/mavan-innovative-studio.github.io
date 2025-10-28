@@ -3,29 +3,63 @@
 	"use strict";
 
 
-	$('.owl-carousel').owlCarousel({
-		loop: true,
-		margin: 30,
-		nav: true,
-		pagination: true,
-		responsive: {
-			0: {
-				items: 1
-			},
-			600: {
-				items: 1
-			},
-			1000: {
-				items: 2
-			}
-		}
-	})
+    var $teamCarousel = $('#testimonials .owl-carousel');
+    if ($teamCarousel.length) {
+        var teamItemCount = $teamCarousel.find('.item').length || 0;
+        var desktopItems = teamItemCount >= 2 ? 2 : Math.max(teamItemCount, 1);
+        var enableControls = teamItemCount > desktopItems;
+
+        // Destroy any previous initialization to avoid duplicated structures
+        if ($teamCarousel.hasClass('owl-loaded')) {
+            $teamCarousel.trigger('destroy.owl.carousel');
+            $teamCarousel.removeClass('owl-loaded');
+            $teamCarousel.find('.owl-stage-outer').children().unwrap();
+        }
+
+        // Toggle centering class when there is nothing to scroll
+        if (enableControls) {
+            $teamCarousel.removeClass('center-stage');
+        } else {
+            $teamCarousel.addClass('center-stage');
+        }
+
+        $teamCarousel.owlCarousel({
+            loop: false,
+            rewind: false,
+            center: false,
+            stagePadding: 0,
+            margin: 30,
+            nav: enableControls,
+            dots: enableControls,
+            mouseDrag: enableControls,
+            touchDrag: enableControls,
+            pullDrag: enableControls,
+            responsive: {
+                0: {
+                    items: Math.min(1, Math.max(teamItemCount, 1))
+                },
+                600: {
+                    items: Math.min(1, Math.max(teamItemCount, 1))
+                },
+                1000: {
+                    items: desktopItems
+                }
+            }
+        });
+    }
 
 
 	$(window).scroll(function () {
+		var $header = $('header');
+		// If page opts into a permanently simple header, force the style and skip toggling
+		if ($header.is('[data-always-simple="true"]')) {
+			$header.addClass('background-header');
+			return;
+		}
+
 		var scroll = $(window).scrollTop();
 		var box = $('.header-text').height();
-		var header = $('header').height();
+		var header = $header.height();
 
 		if (scroll >= box - header) {
 			$("header").addClass("background-header");
@@ -85,6 +119,10 @@
 	});
 
 	$(document).ready(function () {
+		// Apply simple header immediately if opted-in
+		if ($('header').is('[data-always-simple="true"]')) {
+			$('header').addClass('background-header');
+		}
 		$('a[href^="#welcome"]').addClass('active');
 
 		//smoothscroll
