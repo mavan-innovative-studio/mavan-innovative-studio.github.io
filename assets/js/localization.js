@@ -1,24 +1,119 @@
 // Localization handler
 class Localization {
     constructor() {
-        this.currentLang = this.getStoredLanguage() || 'en';
+        this.currentLang = 'en'; // Default fallback
         this.init();
     }
 
-    init() {
-        // Set initial language
+    // Country to language mapping
+    getCountryLanguageMap() {
+        return {
+            // Persian countries
+            'IR': 'fa', // Iran
+            'AF': 'fa', // Afghanistan
+            'TJ': 'fa', // Tajikistan
+            
+            // German countries
+            'DE': 'de', // Germany
+            'AT': 'de', // Austria
+            'CH': 'de', // Switzerland
+            'LI': 'de', // Liechtenstein
+            'LU': 'de', // Luxembourg
+            'BE': 'de', // Belgium (partial)
+            
+            // Default to English for all other countries
+        };
+    }
+
+    // Detect language based on URL parameter, stored preference, or country
+    async detectLanguage() {
+        // 1. Check URL parameter first (highest priority)
+        const urlLang = this.getLanguageFromURL();
+        if (urlLang && translations[urlLang]) {
+            console.log('Language detected from URL:', urlLang);
+            return urlLang;
+        }
+
+        // 2. Check stored preference
+        const storedLang = this.getStoredLanguage();
+        if (storedLang && translations[storedLang]) {
+            console.log('Language detected from storage:', storedLang);
+            return storedLang;
+        }
+
+        // 3. Detect from country (only if no URL parameter or stored preference)
+        try {
+            const country = await this.detectCountry();
+            const countryLangMap = this.getCountryLanguageMap();
+            const detectedLang = countryLangMap[country] || 'en';
+            console.log('Language detected from country:', country, '->', detectedLang);
+            return detectedLang;
+        } catch (error) {
+            console.log('Country detection failed, using English as default:', error);
+            return 'en';
+        }
+    }
+
+    // Get language from URL parameter
+    getLanguageFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('lang');
+    }
+
+    // Detect user's country using IP geolocation
+    async detectCountry() {
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            const data = await response.json();
+            return data.country_code;
+        } catch (error) {
+            // Fallback to browser language detection
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang.startsWith('fa') || browserLang.startsWith('prs')) {
+                return 'IR'; // Assume Iran for Persian language
+            } else if (browserLang.startsWith('de')) {
+                return 'DE'; // Assume Germany for German language
+            }
+            return 'US'; // Default to US (English)
+        }
+    }
+
+    // Update URL with language parameter
+    updateURL(lang) {
+        const url = new URL(window.location);
+        url.searchParams.set('lang', lang);
+        
+        // Update URL without page reload
+        window.history.replaceState({}, '', url);
+    }
+
+    async init() {
+        // Wait for language detection to complete first
+        this.currentLang = await this.detectLanguage();
+        
+        // Set initial language immediately
         this.setLanguage(this.currentLang);
 
-        // Add event listeners to language options (works whether DOM is loaded or not)
+        // Add event listeners using event delegation to work with existing menu system
         const attachLangHandlers = () => {
-            const langOptions = document.querySelectorAll('.lang-option');
-            langOptions.forEach(option => {
-                option.addEventListener('click', (e) => {
+            // Use event delegation on the document to catch clicks on language options
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.lang-option')) {
                     e.preventDefault();
-                    const lang = option.getAttribute('data-lang');
-                    const langName = option.getAttribute('data-lang-name');
+                    e.stopPropagation();
+                    
+                    const langOption = e.target.closest('.lang-option');
+                    const lang = langOption.getAttribute('data-lang');
+                    const langName = langOption.getAttribute('data-lang-name');
+                    
                     this.setLanguage(lang, langName);
-                });
+                    
+                    // Close the dropdown after selection
+                    const submenu = langOption.closest('.submenu');
+                    if (submenu) {
+                        submenu.querySelector('ul').classList.remove('active');
+                    }
+                }
             });
         };
 
@@ -53,6 +148,9 @@ class Localization {
 
         this.currentLang = lang;
         this.setStoredLanguage(lang);
+        
+        // Update URL with language parameter
+        this.updateURL(lang);
         
         // Get language name from attribute if not provided
         if (!langName) {
@@ -90,6 +188,9 @@ class Localization {
         
         // Update current language display
         this.updateCurrentLanguageDisplay(langName || this.getStoredLanguageName() || 'EN');
+        
+        // Update navigation links with language parameter
+        this.updateNavigationLinks();
     }
 
     reinitializeOwlCarousel(isRTL) {
@@ -230,8 +331,38 @@ class Localization {
             }
         }
     }
+
+    // Generate language-aware URL
+    getLanguageURL(baseURL, lang = null) {
+        const targetLang = lang || this.currentLang;
+        const url = new URL(baseURL, window.location.origin);
+        url.searchParams.set('lang', targetLang);
+        return url.toString();
+    }
+
+    // Update all navigation links to include language parameter
+    updateNavigationLinks() {
+        // Update all links that point to HTML files
+        const allLinks = document.querySelectorAll('a[href$=".html"]');
+        
+        allLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href) {
+                // Extract the filename from the href
+                const filename = href.split('/').pop();
+                link.href = this.getLanguageURL(filename);
+            }
+        });
+    }
 }
 
 // Initialize localization when DOM is ready
-const localization = new Localization();
+let localization;
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', async () => {
+        localization = new Localization();
+    });
+} else {
+    localization = new Localization();
+}
 
