@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="JoJo Checklist - Organize your tasks effortlessly">
+    <meta name="author" content="Mavan">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>JoJo - Mavan Innovative Studio</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-lava.css">
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="assets/css/localization.css">
+
+    <style>
+        .app-content {
+            padding: 120px 0 60px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .download-section {
+            padding: 40px 0;
+        }
+
+        .app-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        .app-info {
+            padding: 20px;
+        }
+
+        .app-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2a2a2a;
+            margin-bottom: 20px;
+        }
+
+        .app-description {
+            font-size: 16px;
+            color: #4a4a4a;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            background: linear-gradient(145deg, #1e3a5f, #2c5282);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(30, 58, 95, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 58, 95, 0.5);
+            background: linear-gradient(145deg, #2c5282, #3b6ba6);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .download-btn i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .download-btn svg {
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .download-btn img {
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        /* RTL support for Persian/Farsi */
+        body.rtl .download-btn img {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+
+        body.rtl .download-btn i {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+
+        body.rtl .download-btn svg {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+
+        .content-section {
+            padding: 60px 0;
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .content-text {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 15px;
+            color: #2a2a2a;
+            line-height: 1.7;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .content-text h2 {
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            margin-top: 0;
+            font-weight: 700;
+            font-size: 32px;
+            border-bottom: 2px solid #2c5282;
+            padding-bottom: 15px;
+        }
+
+        .content-text h3 {
+            color: #2a2a2a;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .content-text p {
+            margin-bottom: 12px;
+            text-align: justify;
+            color: #4a4a4a;
+        }
+
+        .content-text ul {
+            margin-left: 25px;
+            margin-bottom: 12px;
+            margin-top: 8px;
+        }
+
+        .content-text ul li {
+            margin-bottom: 8px;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 992px) {
+            .content-text {
+                padding: 35px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-title {
+                font-size: 28px;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+            }
+            
+            .download-btn {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="assets/images/Logo.png" alt="Mavan" style="width: 120px;">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="index.html" class="menu-item" data-translate="nav.home">Home</a></li>
+                            <li><a href="#" class="menu-item active" data-section="download" data-translate="app.nav.download">Download</a></li>
+                            <li><a href="#" class="menu-item" data-section="terms" data-translate="app.nav.terms">Terms of Use</a></li>
+                            <li><a href="#" class="menu-item" data-section="privacy" data-translate="app.nav.privacy">Privacy Policy</a></li>
+                            <li class="submenu language-switcher">
+                                <a href="javascript:;">
+                                    <i class="fa fa-globe"></i> <span id="current-lang">EN</span>
+                                </a>
+                                <ul>
+                                    <li><a href="#" class="lang-option" data-lang="en" data-lang-name="EN">English</a></li>
+                                    <li><a href="#" class="lang-option" data-lang="fa" data-lang-name="فا">فارسی</a></li>
+                                    <li><a href="#" class="lang-option" data-lang="de" data-lang-name="DE">Deutsch</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+    <!-- ***** App Content Start ***** -->
+    <div class="app-content">
+        <div class="container">
+            
+            <!-- Download Section -->
+            <div id="download-section" class="content-section active">
+                <div class="download-section">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 col-md-6 col-sm-12 mb-4">
+                            <img src="assets/images/apps/jojo.webp" alt="JoJo App" class="app-image">
+                        </div>
+                        <div class="col-lg-7 col-md-6 col-sm-12">
+                            <div class="app-info">
+                                <h1 class="app-title" data-translate="app.jojo.title">JoJo Checklist</h1>
+                                <p class="app-description" data-translate="app.jojo.description">
+                                    Jojo Checklist helps you organize your tasks effortlessly with custom and ready-made templates. 
+                                    Whether you're planning your day, managing projects, or keeping track of goals, JoJo makes it simple and intuitive.
+                                    Stay organized, stay productive with JoJo!
+                                </p>
+                                
+                                <div class="download-buttons">
+                                    <a href="https://cafebazaar.ir/app/com.mavan.jojo" target="_blank" class="download-btn">
+                                        <img src="assets/stores/bazaar.png" alt="Cafe Bazaar">
+                                        <span data-translate="app.download.cafebazaar">Download on Cafe Bazaar</span>
+                                    </a>
+                                    <a href="https://myket.ir/app/com.mavan.jojo" target="_blank" class="download-btn">
+                                        <img src="assets/stores/myket.png" alt="Myket">
+                                        <span data-translate="app.download.myket">Download on Myket</span>
+                                    </a>
+                                    <!-- <a href="https://jojo.mavan.studio/pwa" target="_blank" class="download-btn">
+                                        <i class="fa fa-chrome"></i>
+                                        <span data-translate="app.download.pwa">Open PWA Version</span>
+                                    </a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terms of Use Section -->
+            <div id="terms-section" class="content-section">
+                <div class="content-text">
+                    <h2 data-translate="app.terms.title">Terms of Use</h2>
+                    
+                    <p data-translate="app.terms.intro">
+                        Welcome to JoJo Checklist. By using our application, you agree to comply with and be bound by the following terms and conditions.
+                    </p>
+
+                    <h3 data-translate="app.terms.acceptance.title">1. Acceptance of Terms</h3>
+                    <p data-translate="app.terms.acceptance.content">
+                        By accessing and using JoJo Checklist, you accept and agree to be bound by the terms and provision of this agreement.
+                    </p>
+
+                    <h3 data-translate="app.terms.use.title">2. Use of Service</h3>
+                    <p data-translate="app.terms.use.content">
+                        You agree to use JoJo Checklist only for lawful purposes and in accordance with these Terms. You agree not to use the app:
+                    </p>
+                    <ul>
+                        <li data-translate="app.terms.use.item1">In any way that violates any applicable national or international law or regulation</li>
+                        <li data-translate="app.terms.use.item2">To transmit, or procure the sending of, any advertising or promotional material without our prior written consent</li>
+                        <li data-translate="app.terms.use.item3">To impersonate or attempt to impersonate Mavan, a Mavan employee, another user, or any other person or entity</li>
+                    </ul>
+
+                    <h3 data-translate="app.terms.account.title">3. User Account</h3>
+                    <p data-translate="app.terms.account.content">
+                        When you create an account with us, you must provide accurate, complete, and current information at all times. Failure to do so constitutes a breach of the Terms.
+                    </p>
+
+                    <h3 data-translate="app.terms.content.title">4. User Content</h3>
+                    <p data-translate="app.terms.content.content">
+                        You retain all rights to the content you create in JoJo Checklist. We do not claim ownership of your checklists, tasks, or any data you input into the application.
+                    </p>
+
+                    <h3 data-translate="app.terms.termination.title">5. Termination</h3>
+                    <p data-translate="app.terms.termination.content">
+                        We may terminate or suspend your account and bar access to the Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation.
+                    </p>
+
+                    <h3 data-translate="app.terms.changes.title">6. Changes to Terms</h3>
+                    <p data-translate="app.terms.changes.content">
+                        We reserve the right to modify or replace these Terms at any time. We will provide notice of any changes by posting the new Terms on this page.
+                    </p>
+
+                    <h3 data-translate="app.terms.contact.title">7. Contact Us</h3>
+                    <p data-translate="app.terms.contact.content">
+                        If you have any questions about these Terms, please contact us through our website.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Privacy Policy Section -->
+            <div id="privacy-section" class="content-section">
+                <div class="content-text">
+                    <h2 data-translate="app.privacy.title">Privacy Policy</h2>
+                    
+                    <p data-translate="app.privacy.intro">
+                        At Mavan, we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your personal information when you use JoJo Checklist.
+                    </p>
+
+                    <h3 data-translate="app.privacy.collection.title">1. Information We Collect</h3>
+                    <p data-translate="app.privacy.collection.content">
+                        We collect information that you provide directly to us, including:
+                    </p>
+                    <ul>
+                        <li data-translate="app.privacy.collection.item1">Account information (email, username, password)</li>
+                        <li data-translate="app.privacy.collection.item2">Task and checklist data you create</li>
+                        <li data-translate="app.privacy.collection.item3">Usage data and preferences</li>
+                        <li data-translate="app.privacy.collection.item4">Device information and analytics data</li>
+                    </ul>
+
+                    <h3 data-translate="app.privacy.use.title">2. How We Use Your Information</h3>
+                    <p data-translate="app.privacy.use.content">
+                        We use the information we collect to:
+                    </p>
+                    <ul>
+                        <li data-translate="app.privacy.use.item1">Provide, maintain, and improve our services</li>
+                        <li data-translate="app.privacy.use.item2">Personalize your experience</li>
+                        <li data-translate="app.privacy.use.item3">Send you technical notices and support messages</li>
+                        <li data-translate="app.privacy.use.item4">Protect against fraudulent or illegal activity</li>
+                    </ul>
+
+                    <h3 data-translate="app.privacy.sharing.title">3. Information Sharing</h3>
+                    <p data-translate="app.privacy.sharing.content">
+                        We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:
+                    </p>
+                    <ul>
+                        <li data-translate="app.privacy.sharing.item1">With your explicit consent</li>
+                        <li data-translate="app.privacy.sharing.item2">To comply with legal obligations</li>
+                        <li data-translate="app.privacy.sharing.item3">To protect our rights and safety</li>
+                    </ul>
+
+                    <h3 data-translate="app.privacy.security.title">4. Data Security</h3>
+                    <p data-translate="app.privacy.security.content">
+                        We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
+                    </p>
+
+                    <h3 data-translate="app.privacy.retention.title">5. Data Retention</h3>
+                    <p data-translate="app.privacy.retention.content">
+                        We retain your personal information for as long as necessary to provide you with our services and as described in this Privacy Policy.
+                    </p>
+
+                    <h3 data-translate="app.privacy.rights.title">6. Your Rights</h3>
+                    <p data-translate="app.privacy.rights.content">
+                        You have the right to:
+                    </p>
+                    <ul>
+                        <li data-translate="app.privacy.rights.item1">Access your personal information</li>
+                        <li data-translate="app.privacy.rights.item2">Correct inaccurate data</li>
+                        <li data-translate="app.privacy.rights.item3">Request deletion of your data</li>
+                        <li data-translate="app.privacy.rights.item4">Export your data</li>
+                    </ul>
+
+                    <h3 data-translate="app.privacy.children.title">7. Children's Privacy</h3>
+                    <p data-translate="app.privacy.children.content">
+                        JoJo Checklist is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13.
+                    </p>
+
+                    <h3 data-translate="app.privacy.changes.title">8. Changes to Privacy Policy</h3>
+                    <p data-translate="app.privacy.changes.content">
+                        We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
+                    </p>
+
+                    <h3 data-translate="app.privacy.contact.title">9. Contact Us</h3>
+                    <p data-translate="app.privacy.contact.content">
+                        If you have any questions about this Privacy Policy, please contact us through our website.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- ***** App Content End ***** -->
+
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sub-footer">
+                        <p data-translate="footer.copyright">Copyright &copy; 2025 Mavan Innovative Studio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script>
+
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+
+    <!-- Localization -->
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/localization.js"></script>
+
+    <!-- Page Navigation Script -->
+    <script>
+        $(document).ready(function() {
+            // Function to show section
+            function showSection(section) {
+                console.log('Showing section:', section); // Debug log
+                
+                // Update active menu item
+                $('.menu-item').removeClass('active');
+                $('a.menu-item[data-section="' + section + '"]').addClass('active');
+                
+                // Show selected section
+                $('.content-section').removeClass('active');
+                $('#' + section + '-section').addClass('active');
+                
+                // Scroll to top
+                $('html, body').animate({ scrollTop: 0 }, 300);
+            }
+            
+            // Section navigation via clicks - use event delegation for better compatibility
+            $(document).on('click', 'a.menu-item', function(e) {
+                // Check if this link has data-section attribute
+                var section = $(this).attr('data-section');
+                
+                // If no data-section, let the default link behavior work (like Home button)
+                if (!section) {
+                    console.log('Normal link clicked, allowing default behavior');
+                    return true;
+                }
+                
+                // For section links, prevent default and show the section
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('Clicked section:', section); // Debug log
+                
+                // Update URL hash
+                window.location.hash = section;
+                
+                showSection(section);
+                
+                // Close mobile menu if open
+                if ($('.main-nav').hasClass('menu-active')) {
+                    $('.menu-trigger').click();
+                }
+                
+                return false;
+            });
+            
+            // Handle direct URL navigation
+            function handleHash() {
+                var hash = window.location.hash.substring(1); // Remove the #
+                
+                if (hash && $('#' + hash + '-section').length) {
+                    showSection(hash);
+                } else {
+                    // Default to download section
+                    showSection('download');
+                }
+            }
+            
+            // Check hash on page load (with slight delay to ensure DOM is ready)
+            setTimeout(handleHash, 100);
+            
+            // Listen for hash changes
+            $(window).on('hashchange', function() {
+                handleHash();
+            });
+        });
+    </script>
+
+</body>
+</html>
+
