@@ -89,6 +89,14 @@
 
 		//smoothscroll
 		$('.menu-item').on('click', function (e) {
+			var href = $(this).attr('href');
+			
+			// Only apply smooth scroll to hash links (internal page navigation)
+			if (!href || href === '' || !href.startsWith('#')) {
+				// This is an external link or has no hash, let it work normally
+				return true;
+			}
+			
 			e.preventDefault();
 			var athis = this;
 			var target = this.hash,

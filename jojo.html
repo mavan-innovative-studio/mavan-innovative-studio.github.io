@@ -480,10 +480,18 @@
             
             // Section navigation via clicks - use event delegation for better compatibility
             $(document).on('click', 'a.menu-item', function(e) {
+                var href = $(this).attr('href');
+                
+                // If it's an external link (not # or javascript:), allow default behavior
+                if (href && href !== '#' && !href.startsWith('#') && !href.startsWith('javascript:')) {
+                    console.log('External link clicked, navigating to:', href);
+                    return true; // Allow default link behavior
+                }
+                
                 // Check if this link has data-section attribute
                 var section = $(this).attr('data-section');
                 
-                // If no data-section, let the default link behavior work (like Home button)
+                // If no data-section, let the default link behavior work
                 if (!section) {
                     console.log('Normal link clicked, allowing default behavior');
                     return true;
