@@ -21,7 +21,7 @@
 
     <style>
         .app-content {
-            padding: 120px 0 60px;
+            padding: 180px 0 60px;
             min-height: calc(100vh - 200px);
         }
 
@@ -31,8 +31,11 @@
 
         .app-image {
             max-width: 100%;
+            width: 100%;
             height: auto;
             border-radius: 20px;
+            transform: scale(1.5);
+            transform-origin: center;
         }
 
         .app-info {
@@ -180,6 +183,14 @@
         }
 
         @media (max-width: 768px) {
+            .app-content {
+                padding-top: 200px;
+            }
+            
+            .app-image {
+                margin-bottom: 40px;
+            }
+            
             .app-title {
                 font-size: 28px;
             }
@@ -706,8 +717,8 @@
             <div id="download-section" class="content-section active">
                 <div class="download-section">
                     <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-6 col-sm-12 mb-4">
-                            <img src="assets/images/apps/trillion.webp" alt="Trillion App" class="app-image">
+                        <div class="col-lg-5 col-md-6 col-sm-12 mb-4" style="overflow: visible;">
+                            <img src="assets/images/trillion-header.png" alt="Trillion App" class="app-image">
                         </div>
                         <div class="col-lg-7 col-md-6 col-sm-12">
                             <div class="app-info">
