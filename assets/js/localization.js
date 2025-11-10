@@ -32,7 +32,12 @@ class Localization {
         
         // Detect and set initial language
         this.currentLang = await this.detectLanguage();
-        this.setLanguage(this.currentLang);
+        
+        // Get stored language name if available
+        const storedLangName = this.getStoredLanguageName();
+        const langName = storedLangName || this.currentLang.toUpperCase();
+        
+        this.setLanguage(this.currentLang, langName);
 
         // Setup event listeners
         this.setupEventListeners();
@@ -511,6 +516,36 @@ class Localization {
         return translation;
     }
 }
+
+// Early initialization: Set HTML attributes immediately based on stored preference
+// This ensures the page direction and language are set before content renders
+(function() {
+    try {
+        const storedLang = localStorage.getItem('selectedLanguage');
+        const storedLangName = localStorage.getItem('selectedLanguageName');
+        const supportedLangs = ['en', 'fa', 'de'];
+        const rtlLangs = ['fa', 'ar', 'he', 'ur'];
+        
+        if (storedLang && supportedLangs.includes(storedLang)) {
+            const isRTL = rtlLangs.includes(storedLang);
+            document.documentElement.setAttribute('lang', storedLang);
+            document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+            if (isRTL) {
+                document.body.classList.add('rtl');
+            } else {
+                document.body.classList.remove('rtl');
+            }
+            
+            // Update language display if element exists
+            const currentLangElement = document.getElementById('current-lang');
+            if (currentLangElement && storedLangName) {
+                currentLangElement.textContent = storedLangName;
+            }
+        }
+    } catch (e) {
+        console.warn('Failed to set early language attributes:', e);
+    }
+})();
 
 // Initialize localization when DOM is ready
 let localization;

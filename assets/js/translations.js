@@ -128,7 +128,31 @@ const translations = {
         'app.privacy.changes.title': '8. Changes to Privacy Policy',
         'app.privacy.changes.content': 'We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.',
         'app.privacy.contact.title': '9. Contact Us',
-        'app.privacy.contact.content': 'If you have any questions about this Privacy Policy, please contact us through our website.'
+        'app.privacy.contact.content': 'If you have any questions about this Privacy Policy, please contact us through our website.',
+        
+        // JoJo Micro Animations
+        'jojo.animation.organize': 'Organize tasks',
+        'jojo.animation.productive': 'Stay productive',
+        'jojo.animation.download': 'Download app',
+        'jojo.animation.templates': 'Custom templates',
+        'jojo.animation.goals': 'Track goals',
+        'jojo.animation.plan': 'Plan your day',
+        'jojo.animation.start': 'Get started',
+        'jojo.animation.projects': 'Manage projects',
+        'jojo.animation.simple': 'Simple & intuitive',
+        
+        // Trillion Micro Animations
+        'trillion.animation.expenses': 'Monthly Expenses',
+        'trillion.animation.budget': 'Budget Allocation',
+        'trillion.animation.food': 'Food 35%',
+        'trillion.animation.bills': 'Bills 25%',
+        'trillion.animation.other': 'Other 25%',
+        'trillion.animation.trend': 'Spending Trend',
+        'trillion.animation.weekly': 'Weekly Overview',
+        'trillion.animation.income': 'Income',
+        'trillion.animation.income.value': '$4,250',
+        'trillion.animation.savings': 'Savings',
+        'trillion.animation.savings.value': '$1,200'
     },
     fa: {
         // Navigation
@@ -258,7 +282,31 @@ const translations = {
         'app.privacy.changes.title': '۸. تغییرات در سیاست حریم خصوصی',
         'app.privacy.changes.content': 'ممکن است هر از گاهی این سیاست حریم خصوصی را به‌روزرسانی کنیم. ما با ارسال سیاست حریم خصوصی جدید در این صفحه از هر گونه تغییرات به شما اطلاع خواهیم داد.',
         'app.privacy.contact.title': '۹. تماس با ما',
-        'app.privacy.contact.content': 'اگر سوالی در مورد این سیاست حریم خصوصی دارید، لطفا از طریق وب‌سایت ما با ما تماس بگیرید.'
+        'app.privacy.contact.content': 'اگر سوالی در مورد این سیاست حریم خصوصی دارید، لطفا از طریق وب‌سایت ما با ما تماس بگیرید.',
+        
+        // JoJo Micro Animations
+        'jojo.animation.organize': 'سازماندهی وظایف',
+        'jojo.animation.productive': 'بهره‌ور بمانید',
+        'jojo.animation.download': 'دانلود اپلیکیشن',
+        'jojo.animation.templates': 'الگوهای سفارشی',
+        'jojo.animation.goals': 'پیگیری اهداف',
+        'jojo.animation.plan': 'برنامه‌ریزی روز',
+        'jojo.animation.start': 'شروع کنید',
+        'jojo.animation.projects': 'مدیریت پروژه‌ها',
+        'jojo.animation.simple': 'ساده و بصری',
+        
+        // Trillion Micro Animations
+        'trillion.animation.expenses': 'هزینه‌های ماهانه',
+        'trillion.animation.budget': 'تخصیص بودجه',
+        'trillion.animation.food': 'غذا ۳۵٪',
+        'trillion.animation.bills': 'قبض‌ها ۲۵٪',
+        'trillion.animation.other': 'سایر ۲۵٪',
+        'trillion.animation.trend': 'روند هزینه',
+        'trillion.animation.weekly': 'نمای هفتگی',
+        'trillion.animation.income': 'درآمد',
+        'trillion.animation.income.value': '۴,۲۵۰ دلار',
+        'trillion.animation.savings': 'پس‌انداز',
+        'trillion.animation.savings.value': '۱,۲۰۰ دلار'
     },
     de: {
         // Navigation
@@ -393,7 +441,31 @@ const translations = {
         'app.privacy.changes.title': '8. Änderungen der Datenschutzerklärung',
         'app.privacy.changes.content': 'Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Wir werden Sie über alle Änderungen informieren, indem wir die neue Datenschutzerklärung auf dieser Seite veröffentlichen.',
         'app.privacy.contact.title': '9. Kontaktieren Sie uns',
-        'app.privacy.contact.content': 'Wenn Sie Fragen zu dieser Datenschutzerklärung haben, kontaktieren Sie uns bitte über unsere Website.'
+        'app.privacy.contact.content': 'Wenn Sie Fragen zu dieser Datenschutzerklärung haben, kontaktieren Sie uns bitte über unsere Website.',
+        
+        // JoJo Micro Animations
+        'jojo.animation.organize': 'Aufgaben organisieren',
+        'jojo.animation.productive': 'Produktiv bleiben',
+        'jojo.animation.download': 'App herunterladen',
+        'jojo.animation.templates': 'Benutzerdefinierte Vorlagen',
+        'jojo.animation.goals': 'Ziele verfolgen',
+        'jojo.animation.plan': 'Ihren Tag planen',
+        'jojo.animation.start': 'Loslegen',
+        'jojo.animation.projects': 'Projekte verwalten',
+        'jojo.animation.simple': 'Einfach & intuitiv',
+        
+        // Trillion Micro Animations
+        'trillion.animation.expenses': 'Monatliche Ausgaben',
+        'trillion.animation.budget': 'Budgetzuweisung',
+        'trillion.animation.food': 'Essen 35%',
+        'trillion.animation.bills': 'Rechnungen 25%',
+        'trillion.animation.other': 'Sonstiges 25%',
+        'trillion.animation.trend': 'Ausgabentrend',
+        'trillion.animation.weekly': 'Wöchentliche Übersicht',
+        'trillion.animation.income': 'Einkommen',
+        'trillion.animation.income.value': '4.250 €',
+        'trillion.animation.savings': 'Ersparnisse',
+        'trillion.animation.savings.value': '1.200 €'
     }
 };
 
