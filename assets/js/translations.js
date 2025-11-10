@@ -32,7 +32,7 @@ const translations = {
         'team.title.highlight': 'Team',
         'team.description': "We're a duo of passionate founders, hands-on building the future of our products. While we're small today, our vision is big, and we're excited to grow our family of talented creators soon.",
         'team.member1.name': 'Ali Yousefi',
-        'team.member1.title': 'Co-Founder | Head of Technology',
+        'team.member1.title': 'Co Founder | CEO & Developer',
         'team.member2.name': 'Bahareh Keivani',
         'team.member2.title': 'Co-Founder | Head of Product & Developer',
         
@@ -164,7 +164,7 @@ const translations = {
         'team.title.highlight': 'تیم ما',
         'team.description': 'ما یک دونفره از بنیان‌گذاران پرشور هستیم که دست به کار ساختن آینده محصولاتمان هستیم. در حالی که امروز کوچک هستیم، چشم‌انداز ما بزرگ است و مشتاق رشد خانواده خالقان مستعد خود هستیم.',
         'team.member1.name': 'علی یوسفی',
-        'team.member1.title': 'بنیان‌گذار مشترک | مدیر فناوری',
+        'team.member1.title': 'بنیان‌گذار مشترک | مدیرعامل و توسعه‌دهنده',
         'team.member2.name': 'بهاره کیوانی',
         'team.member2.title': 'بنیان‌گذار مشترک | مدیر محصول و توسعه‌دهنده',
         
@@ -302,7 +302,7 @@ const translations = {
         'team.title.highlight': 'Team',
         'team.description': 'Wir sind ein leidenschaftliches Gründerduo, das praktisch an der Zukunft unserer Produkte arbeitet. Während wir heute klein sind, ist unsere Vision groß, und wir freuen uns darauf, unsere Familie talentierter Kreativer bald zu vergrößern.',
         'team.member1.name': 'Ali Yousefi',
-        'team.member1.title': 'Mitbegründer | Leiter der Technologie',
+        'team.member1.title': 'Mitbegründer | CEO & Entwickler',
         'team.member2.name': 'Bahareh Keivani',
         'team.member2.title': 'Mitbegründerin | Leiterin Produkt & Entwickler',
         
