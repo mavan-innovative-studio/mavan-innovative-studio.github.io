@@ -223,6 +223,7 @@
             align-items: center;
             margin-bottom: 8px;
             font-family: 'Poppins', sans-serif;
+            gap: 10px;
         }
 
         .floating-checklist-item:last-child {
@@ -232,12 +233,21 @@
         .checkmark-icon {
             width: 18px;
             height: 18px;
-            margin-right: 10px;
             border: 2px solid #2c5282;
             border-radius: 3px;
             position: relative;
             flex-shrink: 0;
             animation: checkmarkPulse 2s infinite ease-in-out;
+        }
+
+        /* RTL support for checklist item layout and spacing */
+        body.rtl .floating-checklist-item {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .checkmark-icon {
+            margin-right: 0;
+            margin-left: 0;
         }
 
         .checkmark-icon.checked {
