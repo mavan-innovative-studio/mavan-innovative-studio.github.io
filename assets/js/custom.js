@@ -8,43 +8,65 @@
         var teamItemCount = $teamCarousel.find('.item').length || 0;
         var desktopItems = teamItemCount >= 2 ? 2 : Math.max(teamItemCount, 1);
         var enableControls = teamItemCount > desktopItems;
-
-        // Destroy any previous initialization to avoid duplicated structures
-        if ($teamCarousel.hasClass('owl-loaded')) {
-            $teamCarousel.trigger('destroy.owl.carousel');
-            $teamCarousel.removeClass('owl-loaded');
-            $teamCarousel.find('.owl-stage-outer').children().unwrap();
-        }
-
-        // Toggle centering class when there is nothing to scroll
-        if (enableControls) {
-            $teamCarousel.removeClass('center-stage');
-        } else {
-            $teamCarousel.addClass('center-stage');
-        }
-
-        $teamCarousel.owlCarousel({
-            loop: false,
-            rewind: false,
-            center: false,
-            stagePadding: 0,
-            margin: 30,
-            nav: enableControls,
-            dots: enableControls,
-            mouseDrag: enableControls,
-            touchDrag: enableControls,
-            pullDrag: enableControls,
-            responsive: {
-                0: {
-                    items: Math.min(1, Math.max(teamItemCount, 1))
-                },
-                600: {
-                    items: Math.min(1, Math.max(teamItemCount, 1))
-                },
-                1000: {
-                    items: desktopItems
-                }
+        
+        // Function to initialize or destroy carousel based on screen size
+        function initTeamCarousel() {
+            var isMobile = $(window).width() <= 768;
+            
+            // Destroy any previous initialization to avoid duplicated structures
+            if ($teamCarousel.hasClass('owl-loaded')) {
+                $teamCarousel.trigger('destroy.owl.carousel');
+                $teamCarousel.removeClass('owl-loaded');
+                $teamCarousel.find('.owl-stage-outer').children().unwrap();
             }
+            
+            // On mobile, don't initialize carousel - let CSS handle column layout
+            if (isMobile) {
+                $teamCarousel.addClass('mobile-column-layout');
+                return;
+            }
+            
+            // On desktop, initialize carousel
+            $teamCarousel.removeClass('mobile-column-layout');
+            
+            // Toggle centering class when there is nothing to scroll
+            if (enableControls) {
+                $teamCarousel.removeClass('center-stage');
+            } else {
+                $teamCarousel.addClass('center-stage');
+            }
+
+            $teamCarousel.owlCarousel({
+                loop: false,
+                rewind: false,
+                center: false,
+                stagePadding: 0,
+                margin: 30,
+                nav: enableControls,
+                dots: enableControls,
+                mouseDrag: enableControls,
+                touchDrag: enableControls,
+                pullDrag: enableControls,
+                responsive: {
+                    0: {
+                        items: Math.min(1, Math.max(teamItemCount, 1))
+                    },
+                    600: {
+                        items: Math.min(1, Math.max(teamItemCount, 1))
+                    },
+                    1000: {
+                        items: desktopItems
+                    }
+                }
+            });
+        }
+        
+        // Initialize on load
+        initTeamCarousel();
+        
+        // Re-initialize on window resize
+        $(window).on('resize', function() {
+            initTeamCarousel();
         });
     }
 

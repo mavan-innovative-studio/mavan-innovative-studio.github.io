@@ -1046,7 +1046,58 @@ testimonials
   overflow: visible;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+  /* Disable carousel on mobile and show items in column */
+  #testimonials .owl-carousel,
+  #testimonials .owl-carousel.mobile-column-layout {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #testimonials .owl-carousel .owl-stage-outer {
+    width: 100% !important;
+    overflow: visible !important;
+  }
+  
+  #testimonials .owl-carousel .owl-stage {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    transform: none !important;
+    width: 100% !important;
+  }
+  
+  /* Handle both initialized and non-initialized carousel states */
+  #testimonials .owl-carousel .owl-item,
+  #testimonials .owl-carousel.mobile-column-layout .item {
+    width: 100% !important;
+    max-width: 100%;
+    float: none !important;
+    display: flex !important;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  #testimonials .owl-carousel .owl-item:last-child,
+  #testimonials .owl-carousel.mobile-column-layout .item:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Hide carousel navigation on mobile */
+  #testimonials .owl-carousel .owl-nav {
+    display: none !important;
+  }
+  
+  #testimonials .owl-carousel .owl-dots {
+    display: none !important;
+  }
+  
+  #testimonials .team-card {
+    width: 100%;
+    max-width: 100%;
+  }
+  
   #testimonials .team-card .team-photo {
     width: 68px;
     height: 68px;
