@@ -192,11 +192,459 @@
                 width: 100%;
             }
         }
+
+        /* Analytics & Chart Design Elements */
+        .app-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .analytics-decoration {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        .floating-chart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 15px 18px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            font-size: 13px;
+            color: #2a2a2a;
+            max-width: 220px;
+            border-top: 4px solid #2c5282;
+            animation: floatChart 10s infinite ease-in-out;
+        }
+
+        .chart-title {
+            font-weight: 600;
+            font-size: 12px;
+            color: #2c5282;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .chart-content {
+            margin-top: 8px;
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            height: 60px;
+            margin-top: 8px;
+        }
+
+        .bar {
+            flex: 1;
+            background: linear-gradient(to top, #2c5282, #3b6ba6);
+            border-radius: 3px 3px 0 0;
+            min-width: 8px;
+        }
+
+        .bar:nth-child(1) { 
+            height: 40%; 
+            animation: barGrow1 2s ease-out;
+            animation-delay: 0s; 
+        }
+        .bar:nth-child(2) { 
+            height: 65%; 
+            animation: barGrow2 2s ease-out;
+            animation-delay: 0.2s; 
+        }
+        .bar:nth-child(3) { 
+            height: 50%; 
+            animation: barGrow3 2s ease-out;
+            animation-delay: 0.4s; 
+        }
+        .bar:nth-child(4) { 
+            height: 80%; 
+            animation: barGrow4 2s ease-out;
+            animation-delay: 0.6s; 
+        }
+        .bar:nth-child(5) { 
+            height: 45%; 
+            animation: barGrow5 2s ease-out;
+            animation-delay: 0.8s; 
+        }
+
+        /* Different heights for chart-4 */
+        .chart-4 .bar:nth-child(1) { 
+            height: 55%; 
+            animation: barGrowChart4_1 2s ease-out;
+            animation-delay: 0s; 
+        }
+        .chart-4 .bar:nth-child(2) { 
+            height: 70%; 
+            animation: barGrowChart4_2 2s ease-out;
+            animation-delay: 0.2s; 
+        }
+        .chart-4 .bar:nth-child(3) { 
+            height: 45%; 
+            animation: barGrowChart4_3 2s ease-out;
+            animation-delay: 0.4s; 
+        }
+        .chart-4 .bar:nth-child(4) { 
+            height: 60%; 
+            animation: barGrowChart4_4 2s ease-out;
+            animation-delay: 0.6s; 
+        }
+        .chart-4 .bar:nth-child(5) { 
+            height: 75%; 
+            animation: barGrowChart4_5 2s ease-out;
+            animation-delay: 0.8s; 
+        }
+
+        @keyframes barGrowChart4_1 {
+            0% { height: 0; }
+            100% { height: 55%; }
+        }
+        @keyframes barGrowChart4_2 {
+            0% { height: 0; }
+            100% { height: 70%; }
+        }
+        @keyframes barGrowChart4_3 {
+            0% { height: 0; }
+            100% { height: 45%; }
+        }
+        @keyframes barGrowChart4_4 {
+            0% { height: 0; }
+            100% { height: 60%; }
+        }
+        @keyframes barGrowChart4_5 {
+            0% { height: 0; }
+            100% { height: 75%; }
+        }
+
+        @keyframes barGrow1 {
+            0% { height: 0; }
+            100% { height: 40%; }
+        }
+        @keyframes barGrow2 {
+            0% { height: 0; }
+            100% { height: 65%; }
+        }
+        @keyframes barGrow3 {
+            0% { height: 0; }
+            100% { height: 50%; }
+        }
+        @keyframes barGrow4 {
+            0% { height: 0; }
+            100% { height: 80%; }
+        }
+        @keyframes barGrow5 {
+            0% { height: 0; }
+            100% { height: 45%; }
+        }
+
+        /* Pie Chart */
+        .pie-chart {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #2c5282 0% 35%,
+                #3b6ba6 35% 60%,
+                #4a7fb8 60% 85%,
+                #e0e0e0 85% 100%
+            );
+            position: relative;
+            margin: 10px auto;
+            animation: pieRotate 8s infinite linear;
+        }
+
+        .pie-chart::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        @keyframes pieRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Line Chart */
+        .line-chart {
+            height: 50px;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .line-chart svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .chart-line {
+            fill: none;
+            stroke: #2c5282;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            animation: lineDraw 3s ease-out;
+        }
+
+        @keyframes lineDraw {
+            0% {
+                stroke-dasharray: 1000;
+                stroke-dashoffset: 1000;
+            }
+            100% {
+                stroke-dasharray: 1000;
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* Financial Metric Cards */
+        .metric-card {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 12px 15px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            min-width: 140px;
+            animation: floatMetric 8s infinite ease-in-out;
+        }
+
+        .metric-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c5282;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .metric-value.positive {
+            color: #28a745;
+        }
+
+        .metric-value.negative {
+            color: #dc3545;
+        }
+
+        .metric-icon {
+            font-size: 24px;
+            color: #2c5282;
+            margin-bottom: 5px;
+        }
+
+        /* Chart Container Positions */
+        .chart-1 {
+            top: 12%;
+            left: 6%;
+            animation-delay: 0s;
+        }
+
+        .chart-2 {
+            top: 22%;
+            right: 8%;
+            animation-delay: 2s;
+            animation-duration: 12s;
+        }
+
+        .chart-3 {
+            bottom: 28%;
+            left: 8%;
+            animation-delay: 4s;
+            animation-duration: 11s;
+        }
+
+        .chart-4 {
+            bottom: 18%;
+            right: 6%;
+            animation-delay: 1s;
+            animation-duration: 13s;
+        }
+
+        .metric-1 {
+            top: 18%;
+            left: 12%;
+            animation-delay: 1.5s;
+        }
+
+        .metric-2 {
+            bottom: 22%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        @keyframes floatChart {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) rotate(0.5deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(-0.5deg);
+            }
+            75% {
+                transform: translateY(-20px) rotate(0.3deg);
+            }
+        }
+
+        @keyframes floatMetric {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-10px) scale(1.02);
+            }
+        }
+
+        /* Financial Grid Background */
+        .financial-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.04;
+            background-image: 
+                linear-gradient(rgba(44, 82, 130, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(44, 82, 130, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Currency Symbols Decoration */
+        .currency-decoration {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            font-size: 40px;
+            color: rgba(44, 82, 130, 0.08);
+            font-weight: 300;
+            animation: currencyFloat 15s infinite ease-in-out;
+        }
+
+        .currency-1 {
+            top: 15%;
+            right: 15%;
+            animation-delay: 0s;
+        }
+
+        .currency-2 {
+            bottom: 20%;
+            left: 12%;
+            animation-delay: 5s;
+        }
+
+        @keyframes currencyFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.08;
+            }
+            50% {
+                transform: translateY(-30px) rotate(5deg);
+                opacity: 0.12;
+            }
+        }
+
+        /* Responsive: Hide decorative elements on small screens */
+        @media (max-width: 768px) {
+            .floating-chart,
+            .metric-card,
+            .currency-decoration {
+                display: none;
+            }
+        }
     </style>
 
 </head>
 
 <body>
+
+    <!-- Financial Grid Background -->
+    <div class="financial-grid"></div>
+
+    <!-- Currency Symbol Decorations -->
+    <div class="currency-decoration currency-1">$</div>
+    <div class="currency-decoration currency-2">€</div>
+
+    <!-- Floating Chart Cards -->
+    <div class="floating-chart chart-1">
+        <div class="chart-title">Monthly Expenses</div>
+        <div class="bar-chart">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <div class="floating-chart chart-2">
+        <div class="chart-title">Budget Allocation</div>
+        <div class="pie-chart"></div>
+        <div class="chart-content" style="font-size: 10px; text-align: center; margin-top: 5px;">
+            <div>Food 35%</div>
+            <div>Bills 25%</div>
+            <div>Other 25%</div>
+        </div>
+    </div>
+
+    <div class="floating-chart chart-3">
+        <div class="chart-title">Spending Trend</div>
+        <div class="line-chart">
+            <svg viewBox="0 0 200 50" preserveAspectRatio="none">
+                <path class="chart-line" d="M 10,40 Q 50,30 90,25 T 170,15 T 190,10" />
+            </svg>
+        </div>
+    </div>
+
+    <div class="floating-chart chart-4">
+        <div class="chart-title">Weekly Overview</div>
+        <div class="bar-chart">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <!-- Financial Metric Cards -->
+    <div class="metric-card metric-1">
+        <div class="metric-icon">💰</div>
+        <div class="metric-label">Income</div>
+        <div class="metric-value positive">$4,250</div>
+    </div>
+
+    <div class="metric-card metric-2">
+        <div class="metric-icon">📊</div>
+        <div class="metric-label">Savings</div>
+        <div class="metric-value positive">$1,200</div>
+    </div>
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
